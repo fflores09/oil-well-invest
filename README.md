@@ -1,23 +1,72 @@
-📌 Project Overview
-This project aimed to identify the most profitable regions for developing 200 new oil wells. By leveraging predictive modeling and financial metrics, the study provides a data-driven foundation for strategic investment decisions, balancing potential gains against inherent geological risks.
+# Predicción de inversion en pozos petroleros
 
-🚀 Key Features
-Predictive Analysis: Developed a model to estimate oil reserve volumes and regional productivity.
+<img src="assets/img/proyecto.png" width="768" height="1408" title="Proyecto">
+<br>
+<br>
+<br>
 
-Financial Modeling: Conducted an in-depth analysis of key metrics, including projected profits and expected returns (ROI) for each candidate region.
+## **Descripción del proyecto**
+La compañía de extracción de petróleo OilyGiant esta buscando invertir en los mejores lugares para abrir 200 pozos nuevos de petróleo.
 
-Risk Assessment: Implemented statistical techniques (such as Bootstrapping) to estimate the probability of losses and ensure investment security.
+Se tienen datos sobre muestras de crudo de tres regiones. Ya se conocen los parámetros de cada pozo petrolero de la región. Se tendra que crear un modelo que ayude a elegir la región con el mayor margen de beneficio, analizando los beneficios y riesgos potenciales de acuerdo con las siguientes condiciones:
 
-📊 Technical Stack
-Language: Python
+* Al explorar la región, se lleva a cabo un estudio de 500 puntos con la selección de los mejores 200 puntos para el cálculo del beneficio.
+* El presupuesto para el desarrollo de 200 pozos petroleros es de 100 millones de dólares.
+* Un barril de materias primas genera 4.5 USD de ingresos. El ingreso de una unidad de producto es de 4500 dólares (el volumen de reservas está expresado en miles de barriles).
+* Después de la evaluación de riesgo, mantén solo las regiones con riesgo de pérdidas inferior al 2.5%. De las que se ajustan a los criterios, se debe seleccionar la región con el beneficio promedio más alto.
 
-Libraries: Pandas, Scikit-learn, NumPy (for linear regression and statistical modeling).
+<br>
+<br>
+<br>
 
-Concepts: Linear Regression, Bootstrapping, Profit Calculation, Risk Analysis.
+## **Objetivo del proyecto**
 
-📈 Results & Impact
-Optimal Selection: Successfully identified the top-performing region based on the highest Expected Return and the lowest risk profile.
+La secuencia seguida para el desarrollo de este proyecto, junto con los objetivos se muestra a continuación:
 
-Data-Driven Strategy: Provided a robust framework that justifies the allocation of capital for 200 wells, ensuring the selection is backed by predictive accuracy rather than just historical averages.
+* Se analizó el conjunto de datos de cada región individualmente. En cada región se hizo una análisis exploratorio de datos en busca de valores nulos o faltantes y de tendencias en la información.
 
-Profit Optimization: The model prioritized regions that met the minimum threshold for break-even, significantly reducing the margin of error in site selection.
+* Ya verificada y estandarizada la información de los tres conjuntos, se hizo un conjunto único para evitar tener código adicional.
+
+* Con el conjunto de datos único, se dividió en conjunto de prueba y entrenamiento. Se realizó la predicción con el conjunto de entrenamiento buscando aquella región con las métricas más bajas.
+
+* Una vez identificada la región con mejor comportamiento en la predicción, se realizó el cálculo de mayor producción por región. Se enfoco en aquella región que estuviera más cerca del umbral de 111.11 unidades de producto para poder tener ganancias.
+
+* También se realizó el cálculo de ganancias, basándose en los análisis anteriores, considerando los mejores 200 pozos para cade región.
+
+* Finalmente, se cálculo el riesgo y ganancias por región utilizando la estrategia de bootstrap con una muestras de 1000 pozos.  
+<br>
+<br>
+<br>
+
+## **Lenguajes y herramientas usadas**
+
+Plataforma: Jupyter Notebook.
+
+Análisis exploratorio de datos: Python, Pandas, Matplotlib, Scikit-learn, Seaborn, Numpy. 
+
+Modelo de predicción: Linear Regression.
+
+Análisis de negocio y pruebas: Bootstrapping, Profit Calculation, Risk Analysis.
+
+Metricas de evaluación: Error Absoluto Medio (MEA), Error Cuadrático Medio (MSE), R2, RMSE.
+
+<br>
+<br>
+<br>
+
+## **Conclusiones**
+
+Los resultados obtenidos despues del analisis de todos los escenarios, es el siguiente:
+1. Para el análisis del **modelo de predicción de regresion linear, el mejor fue el de la región 1.**
+
+**Región 0:**
+<img src="assets/img/R0.png" width="547" height="850" title="R0">
+
+**Región 1:**
+<img src="assets/img/R1.png" width="547" height="850" title="R1">
+
+3. Para el cálculo de **ganancias usando el umbral de unidades de producto, el mejor fue el de la región 2.**
+4. Para el **beneficio esperado utilizando los mejores 200 pozos por region, el mejor fue el de la región 0.**
+5. Para el **beneficio esperado utilizando la estrategia de bootstrap con 1000 muestras y seleccionando los mejores 200 pozos, el mejor fue la region 0.**
+
+Dicho lo anterior, la región recomendada para invertir es la region 0. 
